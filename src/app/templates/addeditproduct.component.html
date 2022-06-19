@@ -1,0 +1,53 @@
+<form #addAditEditProductForm="ngForm" (ngSubmit)="onSubmit(addAditEditProductForm)">
+    <input type="hidden" name="productId" id="productId" #productId="ngModel" ngModel />
+    <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" class="form-control" name="productName" id="productName" #productName="ngModel" ngModel required="true" />
+        <div *ngIf="productName.touched && !productName.valid" class="alert alert-danger">Product Name is required.</div>
+    </div>
+    <div class="form-group">
+        <label for="productDescription">Product Description</label>
+        <textarea class="form-control" name="productDescription" id="productDescription" #productDescription="ngModel" ngModel rows="5" required="true">
+        </textarea>
+        <div *ngIf="productDescription.touched && !productDescription.valid" class="alert alert-danger">Product Description is required.</div>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" name="isActive" id="isActive" #isActive="ngModel" ngModel />
+        <label for="isActive" class="form-check-label">Is Active</label>
+    </div>
+    <div class="form-group">
+        <label for="listPrice">List Price</label>
+        <input type="text" class="form-control" name="listPrice" id="listPrice" #listPrice="ngModel" ngModel required="true" />
+        <div *ngIf="listPrice.touched && !listPrice.valid" class="alert alert-danger">List Price is required.</div>
+    </div>
+    <div class="form-group">
+        <label for="sellingPrice">Selling Price</label>
+        <input type="text" class="form-control" name="sellingPrice" id="sellingPrice" #sellingPrice="ngModel" ngModel required="true" />
+        <div *ngIf="sellingPrice.touched && !sellingPrice.valid" class="alert alert-danger">Selling Price is required.</div>
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" class="form-control" name="quantity" id="quantity" #quantity="ngModel" ngModel required="true" />
+        <div *ngIf="quantity.touched && !quantity.valid" class="alert alert-danger">Quantity is required.</div>
+    </div>
+    <div class="form-group">
+        <label for="brandId">Brand</label>
+        <select class="form-control" name="brandId" id="brandId" #brandId="ngModel" ngModel required="true">
+            <option value="">-Select Brand-</option>
+            <option *ngFor="let brand of activeBrands" value="{{brand.brandId}}">{{brand.brandName}}</option>
+        </select>
+        <div *ngIf="brandId.touched && !brandId.valid" class="alert alert-danger">Brand is required.</div>
+    </div>
+    <div class="form-group">
+        <label for="departmentId">Department</label>
+        <select class="form-control" name="departmentId" id="departmentId" #departmentId="ngModel" ngModel required="true">
+            <option value="">-Select Department-</option>
+            <option *ngFor="let department of activeDepartments" value="{{department.departmentId}}">{{department.departmentName}}</option>
+        </select>
+        <div *ngIf="departmentId.touched && !departmentId.valid" class="alert alert-danger">Department is required.</div>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Save" />
+        <input type="reset" class="btn btn-secondary" value="Reset" />
+    </div>
+</form>

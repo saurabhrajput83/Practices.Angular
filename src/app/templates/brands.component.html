@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <h4 class="bg-light">Brands</h4>
+    <p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#divAddEditBrandModal">Add New Brand</button>
+    </p>
+    <table class="table table-stripped ">
+        <thead>
+            <tr>
+                <th>Brand Id</th>
+                <th>Brand Name</th>
+                <th>Brand Description</th>
+                <th>Is Active</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of brands">
+                <td>{{item.brandId}}</td>
+                <td>{{item.brandName}}</td>
+                <td>{{item.brandDescription}}</td>
+                <td>{{item.isActive}}</td>
+                <td>
+                    <button class="btn btn-primary">Edit</button> |
+                    <button class="btn btn-primary">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="divAddEditBrandModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Add/Edit Department
+            </div>
+            <div class="modal-body">
+                <app-addeditbrand (modelCreated)="onmodelCreated($event)"></app-addeditbrand>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" #divAddEditBrandModalClose></button>
+            </div>
+        </div>
+    </div>
+</div>

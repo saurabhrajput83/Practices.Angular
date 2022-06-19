@@ -1,0 +1,22 @@
+<form #addAditEditDepartmentForm="ngForm" (ngSubmit)="onSubmit(addAditEditDepartmentForm)">
+    <input type="hidden" name="departmentId" id="departmentId" #departmentId="ngModel" ngModel />
+    <div class="form-group">
+        <label for="departmentName">Department Name</label>
+        <input type="text" class="form-control" name="departmentName" id="departmentName" #departmentName="ngModel" ngModel required="true" />
+        <div *ngIf="departmentName.touched && !departmentName.valid" class="alert alert-danger">Department Name is required.</div>
+    </div>
+    <div class=" form-group ">
+        <label for="departmentDescription">Department Description</label>
+        <textarea class="form-control" name="departmentDescription" id="departmentDescription" #departmentDescription="ngModel" ngModel rows="5" required="true">
+        </textarea>
+        <div *ngIf="departmentDescription.touched && !departmentDescription.valid" class="alert alert-danger">Department Description is required.</div>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" name="isActive" id="isActive" #isActive="ngModel" ngModel />
+        <label for="isActive" class="form-check-label">Is Active</label>
+    </div>
+    <div class="form-group ">
+        <input type="submit" class="btn btn-primary" value="Save" />
+        <input type="reset" class="btn btn-secondary" value="Reset" />
+    </div>
+</form>

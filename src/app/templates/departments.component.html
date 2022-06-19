@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <h4 class="bg-light">Departments</h4>
+    <p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#divAddEditDepartmentModal">Add New Department</button>
+    </p>
+    <table class="table table-stripped ">
+        <thead>
+            <tr>
+                <th>Department Id</th>
+                <th>Department Name</th>
+                <th>Department Description</th>
+                <th>Is Active</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of departments">
+                <td>{{item.departmentId}}</td>
+                <td>{{item.departmentName}}</td>
+                <td>{{item.departmentDescription}}</td>
+                <td>{{item.isActive}}</td>
+                <td>
+                    <button class="btn btn-primary">Edit</button> |
+                    <button class="btn btn-primary">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="divAddEditDepartmentModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Add/Edit Department
+            </div>
+            <div class="modal-body">
+                <app-addeditdepartment (modelCreated)="onmodelCreated($event)"></app-addeditdepartment>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" #divAddEditDepartmentModalClose></button>
+            </div>
+        </div>
+    </div>
+</div>

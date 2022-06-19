@@ -1,0 +1,22 @@
+<form #addAditEditBrandForm="ngForm" (ngSubmit)="onSubmit(addAditEditBrandForm)">
+    <input type="hidden" name="brandId" id="brandId" #brandId="ngModel" ngModel />
+    <div class="form-group">
+        <label for="brandName">Brand Name</label>
+        <input type="text" class="form-control" name="brandName" id="brandName" #brandName="ngModel" ngModel required="true" />
+        <div *ngIf="brandName.touched && !brandName.valid" class="alert alert-danger">Brand Name is required.</div>
+    </div>
+    <div class=" form-group ">
+        <label for="brandDescription">Brand Description</label>
+        <textarea class="form-control" name="brandDescription" id="brandDescription" #brandDescription="ngModel" ngModel rows="5" required="true">
+        </textarea>
+        <div *ngIf="brandDescription.touched && !brandDescription.valid" class="alert alert-danger">Brand Description is required.</div>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" name="isActive" id="isActive" #isActive="ngModel" ngModel />
+        <label for="isActive" class="form-check-label">Is Active</label>
+    </div>
+    <div class="form-group ">
+        <input type="submit" class="btn btn-primary" value="Save" />
+        <input type="reset" class="btn btn-secondary" value="Reset" />
+    </div>
+</form>

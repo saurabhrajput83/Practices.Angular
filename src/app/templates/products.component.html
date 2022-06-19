@@ -1,0 +1,54 @@
+<div class="container mt-5">
+    <h4 class="bg-light">Products</h4>
+    <p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#divAddEditProductModal">Add New Product</button>
+    </p>
+    <div class="row">
+        <div class="col-md-2"></div>
+    </div>
+    <table class="table table-stripped ">
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Product Description</th>
+                <th>List Price</th>
+                <th>Selling Price</th>
+                <th>Quantity</th>
+                <th>Is Active</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of products">
+                <td>{{item.productId}}</td>
+                <td>{{item.productName}}</td>
+                <td>{{item.productDescription}}</td>
+                <td>{{item.listPrice}}</td>
+                <td>{{item.sellingPrice}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.isActive}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="addToCart(item.productId)">Buy</button> |
+                    <button class="btn btn-primary">Edit</button> |
+                    <button class="btn btn-primary">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="divAddEditProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Add/Edit Product
+            </div>
+            <div class="modal-body">
+                <app-addeditproduct (modelCreated)="onmodelCreated($event)"></app-addeditproduct>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" #divAddEditProductModalClose></button>
+            </div>
+        </div>
+    </div>
+</div>
